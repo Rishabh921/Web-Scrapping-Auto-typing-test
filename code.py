@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import time 
 
+intervalPress=0.25
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
 driver.get("https://www.ratatype.com/typing-test/test/")
@@ -21,8 +22,8 @@ content = WebDriverWait(driver, 10).until(
 )
 print(content.text)
 for word in content.text:
-    pyautogui.typewrite(word)
-    
+    pyautogui.write(word, interval=intervalPress)
+driver.quit()
 
 # except:
 #     driver.quit()
